@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <br/>
+
+        <div class="row">
+            <div class="col-12">
+                <h3>
+                    {{ "Books"|trans }}
+                </h3>
+
+                <br/>
+
+                <a href="{{ url('book_create') }}" class="btn btn-info">
+                    <i class="fa fa-plus">
+                    </i>
+                    {{ "Add Book"|trans }}
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-8" style="text-align: right">
+                {% include 'common/page.range.html.twig' %}
+            </div>
+        </div>
+
+        <br/>
+    </div>
+
+    <div class="container-fluid">
+        {% include 'books/list.html.twig' %}
+    </div>
+{% endblock %}

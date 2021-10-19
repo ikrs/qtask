@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <br/>
+
+        <div class="row">
+            <div class="col-12">
+                <h3>
+                    {{ "Add Book"|trans }}
+                </h3>
+
+                <br/>
+            </div>
+        </div>
+
+        <br/>
+
+        {{ form(form) }}
+    </div>
+{% endblock %}

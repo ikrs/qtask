@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <br/>
+
+        <div class="row">
+            <div class="col-12">
+                <h3>
+                    {{ "Authors"|trans }}
+                </h3>
+
+                <br/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-8" style="text-align: right">
+                {% include 'common/page.range.html.twig' %}
+            </div>
+        </div>
+
+        <br/>
+    </div>
+
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>{{ "First Name"|trans }}</th>
+                <th>{{ "Last Name"|trans }}</th>
+                <th>{{ "Birthday"|trans }}</th>
+                <th>{{ "Gender"|trans }}</th>
+                <th>{{ "Place of birth"|trans }}</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td>{{ author.firstName }}</td>
+                    <td>{{ author.lastName }}</td>
+                    <td>{{ author.birthday|date('d.m.Y') }}</td>
+                    <td>{{ author.gender }}</td>
+                    <td>{{ author.placeOfBirth }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ url('author_view', {'authorId': author.id }) }}">
+                            <i class="fa fa-edit">
+                            </i>
+                            {{ "View"|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{{ url('author_delete', {'authorId': author.id }) }}">
+                            <i class="fa fa-remove">
+                            </i>
+                            {{ "Remove"|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

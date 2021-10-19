@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>{{ "Title"|trans }}</th>
+        <th>{{ "Release Date"|trans }}</th>
+        <th>{{ "ISBN"|trans }}</th>
+        <th>{{ "Format"|trans }}</th>
+        <th>{{ "Number of pages"|trans }}</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.releaseDate|date('d.m.Y') }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.format }}</td>
+            <td>{{ book.numberOfPages }}</td>
+            <td>
+                <a class="btn btn-danger" href="{{ url('book_delete', {'bookId': book.id }) }}">
+                    <i class="fa fa-edit">
+                    </i>
+                    {{ "Delete"|trans }}
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

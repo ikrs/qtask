@@ -1,0 +1,15 @@
+{% if pageRange|length %}
+    <form method="get" action="{{ pageRangeAction }}">
+        <select class="form-control" id="page" name="page">
+            {% for item in pageRange %}
+                <option id="item" {% if currentPage == item %}selected{% endif %}>{{ item }}</option>
+            {% endfor %}
+        </select>
+
+        <br/>
+
+        <button type="submit" class="btn btn-success">
+            {{ "Goto page"|trans }}
+        </button>
+    </form>
+{% endif %}

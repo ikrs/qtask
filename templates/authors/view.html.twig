@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <br/>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3>
+                        {{ author.fullName }}
+                    </h3>
+
+                    <br/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    {{ "Birthday"|trans }}
+                                </th>
+                                <th>
+                                    {{ author.birthday|date('d.m.Y') }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ "Gender"|trans }}
+                                </th>
+                                <th>
+                                    {{ author.gender }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ "Place of birth"|trans }}
+                                </th>
+                                <th>
+                                    {{ author.placeOfBirth }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ "Biography"|trans }}
+                                </th>
+                                <th>
+                                    {{ author.biography }}
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <br/>
+
+        {% include 'books/list.html.twig' with {'books': author.books } %}
+    </div>
+{% endblock %}

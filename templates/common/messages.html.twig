@@ -1,0 +1,33 @@
+{% for label, messages in app.flashes(['warning', 'error', 'notice', 'success']) %}
+    {% if messages|length %}
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-12 col-xl-12 col-md-12 col-xs-12 col-sm-12">
+                    <br/>
+
+                    {% for message in messages %}
+                        {% set alertClass = 'alert-' ~ label %}
+
+                        {% if label == 'error' %}
+                            {% set alertClass = 'alert-danger' %}
+                        {% endif %}
+
+                        <div class="alert alert-dismissible {{ alertClass }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i
+                                        class="fa fa-times"></i></button>
+                            {% if label == 'success' %}
+                                &nbsp;<i class="fa fa-check fa-2x"></i>
+                            {% elseif label == 'warning' %}
+                                &nbsp;<i class="fa fa-exclamation-triangle fa-2x"></i>
+                            {% else %}
+                                &nbsp;<i class="fa fa-times fa-2x"></i>
+                            {% endif %}
+
+                            {{ message|trans }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

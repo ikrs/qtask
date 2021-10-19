@@ -1,5 +1,5 @@
 security:
-    # https://symfony.com/doc/current/security/authenticator_manager.html
+    always_authenticate_before_granting: false
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#c-hashing-passwords
     password_hashers:
@@ -15,6 +15,9 @@ security:
             lazy: true
             provider: users_in_memory
 
+            custom_authenticators:
+                - App\Security\Authenticator\ApiAuthenticator
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -24,5 +27,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/user/login, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: ROLE_USER }
